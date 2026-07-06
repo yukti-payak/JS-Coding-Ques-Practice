@@ -90,7 +90,7 @@ function countVowels(str){
     }
     return count;
 }
-console.log(countVowels("helloworld"));
+// console.log(countVowels("helloworld"));
 
 //using built-in method
 function checkVowels(str){
@@ -105,4 +105,70 @@ function checkVowels(str){
 
     return count++;
 }
-console.log(checkVowels("helloworld"));
+// console.log(checkVowels("helloworld"));
+
+// ques 6: implemnet a debounce function in javascript 
+function debounce(func, delay){
+    let timer ;
+  return function (...args){
+      clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        func(...args);     
+      } , delay);
+    }
+}
+
+
+
+//ques 7: Remove Duplicates 
+function removeDuplicates(arr){
+    let result = [];
+
+    for(let i=0;i <arr.length;i++){
+        if(!result.includes(arr[i])){
+            result.push(arr[i]);
+        }
+    }
+
+    return result;
+}
+let arr = [3,5,6,2,3,8,9,3,5]
+// console.log(removeDuplicates(arr));
+
+//using Set built-in method optimal solution 
+function removeDuplicates(nums){
+    return[...new Set(nums)];
+}
+console.log(removeDuplicates( [3,5,6,2,3,8,9,3,5]));
+
+
+
+// const input = document.getElementById("search");
+// function searchData(value) {
+//     console.log("API Call:", value);
+// }
+
+// input.addEventListener("keyup", (e) => {
+//     searchData(e.target.value);
+// });
+
+
+
+// const input = document.getElementById("search");
+// function searchData(value) {
+//     console.log("API Call:", value);
+// }
+// function debounce(func, delay) {
+//     let timer;
+//     return function (...args) {
+//         clearTimeout(timer);
+//         timer = setTimeout(() => {
+//             func(...args);
+//         }, delay);
+//     };
+// }
+// const debouncedSearch = debounce(searchData, 500);
+// input.addEventListener("keyup", (e) => {
+//     debouncedSearch(e.target.value);
+// });
