@@ -172,3 +172,30 @@ console.log(removeDuplicates( [3,5,6,2,3,8,9,3,5]));
 // input.addEventListener("keyup", (e) => {
 //     debouncedSearch(e.target.value);
 // });
+
+function isAnagram(s, t) {
+ 
+  if (s.length !== t.length) return false;
+
+  const charCounts = {};
+
+
+  for (let char of s) {
+    charCounts[char] = (charCounts[char] || 0) + 1;
+  }
+
+
+  for (let char of t) {
+    if (!charCounts[char]) {
+     
+      return false;
+    }
+    charCounts[char]--;
+  }
+
+  return true;
+}
+
+
+console.log(isAnagram("listen", "silent")); 
+  
