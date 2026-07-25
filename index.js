@@ -196,6 +196,27 @@ function isAnagram(s, t) {
   return true;
 }
 
+function binarySearch(arr, key){
+
+    let left = 0;
+    let right = arr.length - 1;
+    while( left <= right){
+    let mid = Math.floor( (left + right)/2);
+        if(arr[mid] === key){
+            return mid;
+        }
+        else if(arr[mid] > key){
+            right--;
+        
+        }
+        else{
+            left++;
+        }
+        
+    }
+    return -1;
+}
+
 
 console.log(isAnagram("listen", "silent")); 
   
