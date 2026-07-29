@@ -173,18 +173,13 @@ console.log(removeDuplicates( [3,5,6,2,3,8,9,3,5]));
 //     debouncedSearch(e.target.value);
 // });
 
+// check Anagram 
 function isAnagram(s, t) {
- 
   if (s.length !== t.length) return false;
-
   const charCounts = {};
-
-
   for (let char of s) {
     charCounts[char] = (charCounts[char] || 0) + 1;
   }
-
-
   for (let char of t) {
     if (!charCounts[char]) {
      
@@ -192,10 +187,11 @@ function isAnagram(s, t) {
     }
     charCounts[char]--;
   }
-
   return true;
 }
+console.log(isAnagram("listen", "silent")); 
 
+//Binary Search
 function binarySearch(arr, key){
 
     let left = 0;
@@ -217,10 +213,7 @@ function binarySearch(arr, key){
     return -1;
 }
 
-
-console.log(isAnagram("listen", "silent")); 
-
-
+// factorial of a number
 function factorial(n) {
     let result = 1;
 
@@ -243,5 +236,23 @@ function factorial(n) {
     return result;
 }
 
-console.log(factorial(5));
+console.log(factorial(8));
+
+
+//fibonacci of a number 
+function fibonacciSeries(n) {
+  let first = 0;
+  let second = 1;
+
+  for (let i = 0; i < n; i++) {
+    console.log(first);
+
+    let next = first + second;
+    first = second;
+    second = next;
+  }
+}
+fibonacciSeries(10);
+
+
   
