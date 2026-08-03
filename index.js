@@ -292,4 +292,15 @@ function twoSum(arr,target){
 
 console.log(twoSum([2,7,11,15],9));
 
+
+function longest(sentence){
+
+    return sentence
+    .split(" ")
+    .reduce((a,b)=>a.length>b.length?a:b);
+
+}
+
+console.log(longest("I love javascript programming"));
+
   
