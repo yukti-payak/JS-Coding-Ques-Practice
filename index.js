@@ -312,4 +312,25 @@ function capitalize(str) {
 
 console.log(capitalize("hello world"));
 
+
+// first repeating non character number 
+function firstUnique(str){
+
+    let map={};
+
+    for(let char of str){
+        map[char]=(map[char]||0)+1;
+    }
+
+    for(let char of str){
+        if(map[char]===1){
+            return char;
+        }
+    }
+
+    return null;
+
+}
+
+console.log(firstUnique("aabbcddee"));
   
