@@ -333,4 +333,17 @@ function firstUnique(str){
 }
 
 console.log(firstUnique("aabbcddee"));
+
+
+function countOccurrences(arr) {
+    let obj = {};
+
+    for(let item of arr){
+        obj[item] = (obj[item] || 0) + 1;
+    }
+
+    return obj;
+}
+
+console.log(countOccurrences(["a","b","a","c","b","a"]));
   
