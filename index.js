@@ -346,4 +346,15 @@ function countOccurrences(arr) {
 }
 
 console.log(countOccurrences(["a","b","a","c","b","a"]));
+
+
+function longest(sentence){
+
+    return sentence
+    .split(" ")
+    .reduce((a,b)=>a.length>b.length?a:b);
+
+}
+
+console.log(longest("I love javascript programming"));
   
