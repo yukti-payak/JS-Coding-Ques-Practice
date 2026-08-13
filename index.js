@@ -347,7 +347,7 @@ function countOccurrences(arr) {
 
 console.log(countOccurrences(["a","b","a","c","b","a"]));
 
-
+// longest word question
 function longest(sentence){
 
     return sentence
