@@ -371,5 +371,34 @@ function missingNumber(arr) {
 }
 
 console.log(missingNumber([1, 2, 3, 5, 6]));
-// 4
+
+
+
+function debounce(fn, delay) {
+  let timerId = null;
+
+  return function (...args) {
+
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+
+
+    timerId = setTimeout(() => {
+      fn.apply(this, args); 
+    }, delay);
+  };
+}
+
+const handleSearch = debounce((query) => {
+  console.log(`Fetching results for: ${query}`);
+}, 300);
+
+handleSearch('J');
+handleSearch('JS');
+handleSearch('JS Code'); 
+
+
+
+
   
