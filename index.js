@@ -399,6 +399,46 @@ handleSearch('JS');
 handleSearch('JS Code'); 
 
 
+function promiseAll(promises) {
+  return new Promise((resolve, reject) => {
+    if (!Array.isArray(promises)) {
+      return reject(new TypeError('Argument must be an array'));
+    }
+
+    const results = [];
+    let completedCount = 0;
+
+    if (promises.length === 0) {
+      return resolve([]);
+    }
+
+    promises.forEach((item, index) => {
+     
+      Promise.resolve(item)
+        .then((value) => {
+          results[index] = value; 
+          completedCount += 1;
+
+          if (completedCount === promises.length) {
+            resolve(results);
+          }
+        })
+        .catch((error) => {
+          reject(error); 
+        });
+    });
+  });
+}
+
+const p1 = Promise.resolve(10);
+const p2 = new Promise((res) => setTimeout(() => res(20), 100));
+const p3 = 30; 
+
+promiseAll([p1, p2, p3])
+  .then((data) => console.log(data)) 
+  .catch((err) => console.error(err));
+
+
 
 
   
