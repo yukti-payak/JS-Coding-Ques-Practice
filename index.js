@@ -455,5 +455,21 @@ function throttle(fn, delay) {
 }
 
 
+function sumOfNaturalNumbersLoop(n) {
+  if (n < 1) {
+    return 0;
+  }
+  
+  let total = 0;
+  for (let i = 1; i <= n; i++) {
+    total += i;
+  }
+  
+  return total;
+}
+
+
+console.log(sumOfNaturalNumbersLoop(10));
+
 
   
