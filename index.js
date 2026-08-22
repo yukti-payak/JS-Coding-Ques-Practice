@@ -472,4 +472,19 @@ function sumOfNaturalNumbersLoop(n) {
 console.log(sumOfNaturalNumbersLoop(10));
 
 
+
+function throttle(func, delay) {
+  let inThrottle = false;
+
+  return function (...args) {
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), delay);
+    }
+  };
+}
+
+
   
