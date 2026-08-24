@@ -502,9 +502,25 @@ function maxSubArray(nums) {
   return maxSum;
 }
 
-// Example usage:
+
 const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 console.log(maxSubArray(nums)); 
+
+
+
+function linearSearch(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+
+console.log(linearSearch([10, 25, 30, 45, 50], 45)); 
+console.log(linearSearch(['apple', 'banana', 'cherry'], 'grape'));
+
 
 
   
