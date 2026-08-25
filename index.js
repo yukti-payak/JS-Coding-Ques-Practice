@@ -523,4 +523,62 @@ console.log(linearSearch(['apple', 'banana', 'cherry'], 'grape'));
 
 
 
+class TodoList {
+  constructor() {
+    this.todos = JSON.parse(localStorage.getItem('todos')) || [];
+  }
+  save() {
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+  // Create
+  add(text) {
+    if (!text || !text.trim()) return;
+    const newTodo = {
+      id: Date.now(),
+      text: text.trim(),
+      completed: false,
+      createdAt: new Date().toISOString()
+    };
+    this.todos.push(newTodo);
+    this.save();
+    return newTodo;
+  }
+
+  // Read
+  getAll() {
+    return this.todos;
+  }
+
+  // Update Status
+  toggleComplete(id) {
+    this.todos = this.todos.map(todo => 
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
+    this.save();
+  }
+
+  // Update Text
+  edit(id, newText) {
+    if (!newText || !newText.trim()) return;
+    this.todos = this.todos.map(todo =>
+      todo.id === id ? { ...todo, text: newText.trim() } : todo
+    );
+    this.save();
+  }
+
+  // Delete
+  delete(id) {
+    this.todos = this.todos.filter(todo => todo.id !== id);
+    this.save();
+  }
+
+  // Clear completed
+  clearCompleted() {
+    this.todos = this.todos.filter(todo => !todo.completed);
+    this.save();
+  }
+}
+
+
   
