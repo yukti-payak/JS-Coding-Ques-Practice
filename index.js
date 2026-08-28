@@ -581,4 +581,15 @@ class TodoList {
 }
 
 
+function missingNumberXOR(nums) {
+  let missing = nums.length;
+  
+  for (let i = 0; i < nums.length; i++) {
+    missing ^= i ^ nums[i];
+  }
+  
+  return missing;
+}
+
+console.log(missingNumberXOR([3, 0, 1])); 
   
