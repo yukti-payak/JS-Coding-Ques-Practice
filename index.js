@@ -592,4 +592,14 @@ function missingNumberXOR(nums) {
 }
 
 console.log(missingNumberXOR([3, 0, 1])); 
+
+function countVowels(str) {
+  const matches = str.match(/[aeiou]/gi);
+  return matches ? matches.length : 0;
+}
+
+
+console.log(countVowels("Hello World")); 
+console.log(countVowels("JavaScript"));  
+console.log(countVowels("rhythm"));      
   
