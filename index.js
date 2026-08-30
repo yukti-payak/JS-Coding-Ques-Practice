@@ -597,9 +597,28 @@ function countVowels(str) {
   const matches = str.match(/[aeiou]/gi);
   return matches ? matches.length : 0;
 }
-
-
 console.log(countVowels("Hello World")); 
 console.log(countVowels("JavaScript"));  
 console.log(countVowels("rhythm"));      
-  
+
+//remove first element from array
+let arr = [5, 6, 7];
+arr = arr.slice(1); 
+console.log(arr);
+
+//print frequency of elements in array
+function frequency(arr) {
+    const freq = {};
+    for (let i = 0; i < arr.length; i++) {
+        if (freq[arr[i]]) {
+            freq[arr[i]] += 1;
+        } else {
+            freq[arr[i]] = 1;
+        }
+    }
+    return freq;
+}
+
+console.log(frequency([1, 1, 2, 3, 3, 4]));
+
+
