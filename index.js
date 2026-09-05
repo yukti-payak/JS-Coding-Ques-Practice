@@ -667,3 +667,59 @@ function threeSum(nums) {
 console.log(threeSum([-1, 0, 1, 2, -1, -4])); 
 
 
+
+class LRUCache {
+  /**
+   * @param {number} capacity
+   */
+  constructor(capacity) {
+    this.capacity = capacity;
+    this.cache = new Map();
+  }
+
+  /**
+   * @param {number} key
+   * @return {number}
+   */
+  get(key) {
+    if (!this.cache.has(key)) {
+      return -1;
+    }
+
+    // Accessing an item makes it recently used:
+    // Delete it and re-insert it at the end of the Map
+    const value = this.cache.get(key);
+    this.cache.delete(key);
+    this.cache.set(key, value);
+
+    return value;
+  }
+  put(key, value) {
+   
+    if (this.cache.has(key)) {
+      this.cache.delete(key);
+    } 
+    // If at capacity, remove the oldest item (first key in the Map)
+    else if (this.cache.size >= this.capacity) {
+      const oldestKey = this.cache.keys().next().value;
+      this.cache.delete(oldestKey);
+    }
+
+    // Insert the key-value pair as the most recently used
+    this.cache.set(key, value);
+  }
+}
+
+
+const lru = new LRUCache(2);
+lru.put(1, 1); 
+lru.put(2, 2); 
+console.log(lru.get(1)); 
+lru.put(3, 3); 
+console.log(lru.get(2));
+lru.put(4, 4); 
+console.log(lru.get(1)); 
+console.log(lru.get(3)); 
+console.log(lru.get(4)); 
+
+
