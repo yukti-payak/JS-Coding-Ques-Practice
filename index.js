@@ -763,3 +763,21 @@ function twoSum(nums, target) {
 console.log(twoSum([2, 7, 11, 15], 9)); 
 console.log(twoSum([3, 2, 4], 6));      
 
+function maximumAvgSubArr(nums, k) {
+    let ans = -Infinity;
+    let sum = 0;
+    let i = 0, j = 0;
+    let avg = 0;
+    
+    while (j < nums.length) {
+        sum += nums[j];
+        if (j - i + 1 === k) {
+            avg = sum / k;
+            ans = Math.max(avg, ans);
+            sum -= nums[i];
+            i++;
+        }
+        j++;
+    }
+    return ans;
+};
