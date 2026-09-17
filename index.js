@@ -781,3 +781,34 @@ function maximumAvgSubArr(nums, k) {
     }
     return ans;
 };
+
+function sortZerosAndOnes(nums) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left < right) {
+        // Increment left pointer if it already points to 0
+        while (nums[left] === 0 && left < right) {
+            left++;
+        }
+        // Decrement right pointer if it already points to 1
+        while (nums[right] === 1 && left < right) {
+            right--;
+        }
+
+        // Swap the elements if left is still less than right
+        if (left < right) {
+            nums[left] = 0;
+            nums[right] = 1;
+            left++;
+            right--;
+        }
+    }
+    return nums;
+}
+
+// Example usage:
+const colors = [1, 0, 1, 1, 0, 0, 1, 0];
+console.log(sortZerosAndOnes(colors)); 
+
+
