@@ -807,8 +807,29 @@ function sortZerosAndOnes(nums) {
     return nums;
 }
 
-// Example usage:
+
 const colors = [1, 0, 1, 1, 0, 0, 1, 0];
 console.log(sortZerosAndOnes(colors)); 
+
+function maxArea(height) {
+    let maxWater = 0;
+    let left = 0;
+    let right = height.length - 1;
+
+    while (left < right) {
+        const width = right - left;
+        const minHeight = Math.min(height[left], height[right]);
+
+        const currentWater = width * minHeight;
+        maxWater = Math.max(maxWater, currentWater);
+        if (height[left] < height[right]) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+
+    return maxWater;
+}
 
 
