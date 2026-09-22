@@ -946,3 +946,23 @@ console.log(binarySearch([1, 3, 5, 7, 9, 11, 15], 10));
 
 
 
+function findPeakElement(nums) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left < right) {
+        const mid = Math.floor(left + (right - left) / 2);
+        if (nums[mid] < nums[mid + 1]) {
+            left = mid + 1;
+        } 
+        
+        else {
+            right = mid;
+        }
+    }
+
+    
+    return left;
+}
+
+console.log(findPeakElement([1, 2, 3, 1])); 
