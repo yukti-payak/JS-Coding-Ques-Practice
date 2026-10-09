@@ -1004,3 +1004,25 @@ function search(nums, target) {
 
 console.log(search([4, 5, 6, 7, 0, 1, 2], 0)); 
 console.log(search([4, 5, 6, 7, 0, 1, 2], 3)); 
+
+
+
+function fourLargest(arr) {
+    let largest = [];
+
+    for (let num of arr) {
+        largest.push(num);
+        largest.sort((a, b) => b - a);
+
+        if (largest.length > 4) {
+            largest.pop();
+        }
+    }
+
+    return largest;
+}
+
+console.log(fourLargest([10, 25, 8, 40, 15, 30, 50, 5]));
+
+
+
