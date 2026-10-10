@@ -1026,3 +1026,35 @@ console.log(fourLargest([10, 25, 8, 40, 15, 30, 50, 5]));
 
 
 
+function thirdLargest(arr) {
+    let first = -Infinity;
+    let second = -Infinity;
+    let third = -Infinity;
+
+    for (let num of arr) {
+        if (num > first) {
+            third = second;
+            second = first;
+            first = num;
+        } else if (num > second && num < first) {
+            third = second;
+            second = num;
+        } else if (num > third && num < second) {
+            third = num;
+        }
+    }
+
+    if (third === -Infinity) {
+        return "Third largest distinct element does not exist";
+    }
+
+    return third;
+}
+
+let arr = [10, 5, 20, 8, 15, 20];
+
+console.log(thirdLargest(arr)); 
+
+
+
+
