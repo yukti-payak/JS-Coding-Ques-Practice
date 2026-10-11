@@ -1056,5 +1056,30 @@ let arr = [10, 5, 20, 8, 15, 20];
 console.log(thirdLargest(arr)); 
 
 
+let arr = [10, 5, 20, 8, 15];
+
+let first = -Infinity;
+let second = -Infinity;
+let third = -Infinity;
+
+for (let num of arr) {
+    if (num > first) {
+        third = second;
+        second = first;
+        first = num;
+    } else if (num > second && num < first) {
+        third = second;
+        second = num;
+    } else if (num > third && num < second) {
+        third = num;
+    }
+}
+
+if (third === -Infinity) {
+    console.log("Third largest number does not exist");
+} else {
+    console.log("Third largest:", third);
+}
+
 
 
