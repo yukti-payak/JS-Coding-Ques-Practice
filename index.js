@@ -1083,3 +1083,27 @@ if (third === -Infinity) {
 
 
 
+let sentence = "JavaScript is very powerful";
+
+let word = "";
+let longestWord = "";
+
+for (let i = 0; i < sentence.length; i++) {
+    if (sentence[i] !== " ") {
+        word = word + sentence[i];
+    } else {
+        if (word.length > longestWord.length) {
+            longestWord = word;
+        }
+
+        word = "";
+    }
+}
+if (word.length > longestWord.length) {
+    longestWord = word;
+}
+
+console.log(longestWord);
+
+
+
