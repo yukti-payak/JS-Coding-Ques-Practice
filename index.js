@@ -1168,3 +1168,20 @@ function firstNonRepeating(str) {
 
 console.log(firstNonRepeating("aabbcdde")); 
 
+
+function findDuplicates(str) {
+    let freq = new Map();
+
+    for (let char of str) {
+        freq.set(char, (freq.get(char) || 0) + 1);
+    }
+
+    for (let [char, count] of freq) {
+        if (count > 1) {
+            console.log(char, ":", count);
+        }
+    }
+}
+
+findDuplicates("banana");
+
