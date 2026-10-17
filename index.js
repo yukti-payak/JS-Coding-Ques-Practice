@@ -1184,4 +1184,26 @@ function findDuplicates(str) {
 }
 
 findDuplicates("banana");
+function twoSum(arr, target){
+
+    let i = 0;
+    let j = arr.length - 1;
+
+    while( j > i){
+        let sum = arr[i] + arr[j];
+
+        if(sum === target){
+            return [i, j]
+        }
+        else if(sum > target){
+            j--;
+        }
+        else{
+            i++
+        }
+
+    }
+
+
+}
 
