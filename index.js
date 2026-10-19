@@ -1221,5 +1221,28 @@ function longestWord(sentence) {
 
 console.log(longestWord("I am learning JavaScript"));
 
+function longestWord(sentence) {
+    let words = sentence.split(" ");
+    let longest = "";
 
+    for (let word of words) {
+        if (word.length > longest.length) {
+            longest = word;
+        }
+    }
+
+    return longest;
+}
+function shortestWord(sentence) {
+    let words = sentence.split(" ");
+    let shorttest = "";
+
+    for (let word of words) {
+        if (word.length < shorttest.length) {
+            shorttest = word;
+        }
+    }
+
+    return shorttest;
+}
 
