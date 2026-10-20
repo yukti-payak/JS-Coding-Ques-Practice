@@ -1245,4 +1245,20 @@ function shortestWord(sentence) {
 
     return shorttest;
 }
+function countWords(str) {
+    str = str.trim();
+
+    if (str === "") {
+        return 0;
+    }
+
+    return str.split(/\s+/).length;
+}
+
+console.log(countWords("JavaScript is awesome")); 
+console.log(countWords("Hello World"));           
+console.log(countWords(""));                      
+
+
+
 
