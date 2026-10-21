@@ -1259,6 +1259,27 @@ console.log(countWords("JavaScript is awesome"));
 console.log(countWords("Hello World"));           
 console.log(countWords(""));                      
 
+function sortArray(arr)
+{
+    arr.sort((a, b) => a - b);
+    return arr;
+}
+
+let arr = [ 2, 1, 5, 4, 3 ];
+
+let res = sortArray(arr);
+
+let ans = "[";
+for (let i = 0; i < res.length; i++) {
+    ans += res[i];
+    if (i !== res.length - 1) {
+        ans += ", ";
+    }
+}
+ans += "]";
+
+console.log(ans);
+
 
 
 
