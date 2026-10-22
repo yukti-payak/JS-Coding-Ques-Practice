@@ -1281,5 +1281,19 @@ ans += "]";
 console.log(ans);
 
 
+function removeCharacter(str, char) {
+    let result = "";
+
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] !== char) {
+            result += str[i];
+        }
+    }
+
+    return result;
+}
+
+console.log(removeCharacter("banana", "a"));   
+console.log(removeCharacter("hello", "l"));  
 
 
