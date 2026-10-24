@@ -1307,3 +1307,16 @@ a = a.substring(b.length);
 console.log("a =", a);
 console.log("b =", b);
 
+
+function firstNonRepeating(str) {
+    for (let char of str) {
+        if (str.indexOf(char) === str.lastIndexOf(char)) {
+            return char;
+        }
+    }
+
+    return null;
+}
+
+console.log(firstNonRepeating("aabbcdde"));
+
