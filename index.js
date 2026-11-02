@@ -1398,3 +1398,47 @@ function calculateAverage(arr) {
 console.log(calculateAverage([10, 20, 30, 40, 50]));
 
 
+
+
+function activitySelection(start, end) {
+    let activities = [];
+    for (let i = 0; i < start.length; i++) {
+        activities.push({
+            start: start[i],
+            end: end[i],
+            index: i
+        });
+    }
+
+  
+    activities.sort((a, b) => a.end - b.end);
+
+    let count = 1;
+    let selected = [activities[0].index];
+
+    let lastEnd = activities[0].end;
+
+    for (let i = 1; i < activities.length; i++) {
+
+        if (activities[i].start >= lastEnd) {
+            count++;
+
+            selected.push(activities[i].index);
+
+            lastEnd = activities[i].end;
+        }
+    }
+
+    return {
+        count,
+        selected
+    };
+}
+
+const start = [1, 3, 0, 5, 8, 5];
+const end = [2, 4, 6, 7, 9, 9];
+
+console.log(activitySelection(start, end));
+
+
+
