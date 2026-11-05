@@ -1441,4 +1441,52 @@ const end = [2, 4, 6, 7, 9, 9];
 console.log(activitySelection(start, end));
 
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accordion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="accordion">
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                What is JavaScript?
+                <span>+</span>
+            </button>
+            <div class="accordion-content">
+                JavaScript is a programming language used
+                to make web pages interactive.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                What is React?
+                <span>+</span>
+            </button>
+            <div class="accordion-content">
+                React is a JavaScript library used to
+                build user interfaces.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                What is Node.js?
+                <span>+</span>
+            </button>
+            <div class="accordion-content">
+                Node.js is a JavaScript runtime environment.
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
 
