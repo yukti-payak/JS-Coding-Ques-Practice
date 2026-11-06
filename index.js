@@ -1490,3 +1490,180 @@ console.log(activitySelection(start, end));
 </html>
 
 
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Dropdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+
+    .dropdown {
+      width: 250px;
+      position: relative;
+    }
+
+    .dropdown-btn {
+      width: 100%;
+      padding: 12px;
+      background: white;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      text-align: left;
+      border-radius: 5px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      width: 100%;
+      background: white;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      border-radius: 5px;
+      max-height: 200px;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    .search {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      outline: none;
+    }
+
+    .option {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      background: #eee;
+    }
+
+    .no-result {
+      padding: 10px;
+      color: gray;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Custom Dropdown</h2>
+
+  <div class="dropdown" id="dropdown">
+
+    <button class="dropdown-btn" id="dropdownBtn">
+      Select Country ▼
+    </button>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+
+      <input
+        type="text"
+        class="search"
+        id="search"
+        placeholder="Search..."
+      />
+
+      <div id="options"></div>
+
+    </div>
+  </div>
+
+  <script>
+    const countries = [
+      "India",
+      "USA",
+      "Canada",
+      "Australia",
+      "Germany",
+      "France",
+      "Japan",
+      "China"
+    ];
+
+    const dropdown = document.getElementById("dropdown");
+    const dropdownBtn = document.getElementById("dropdownBtn");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const search = document.getElementById("search");
+    const options = document.getElementById("options");
+
+    let selectedValue = "";
+
+    // Render options
+    function renderOptions(data) {
+      options.innerHTML = "";
+
+      if (data.length === 0) {
+        options.innerHTML =
+          '<div class="no-result">No results found</div>';
+        return;
+      }
+
+      data.forEach(country => {
+        const div = document.createElement("div");
+
+        div.className = "option";
+        div.textContent = country;
+
+        div.addEventListener("click", () => {
+          selectOption(country);
+        });
+
+        options.appendChild(div);
+      });
+    }
+
+    dropdownBtn.addEventListener("click", () => {
+      dropdownMenu.classList.toggle("show");
+    });
+
+    function selectOption(value) {
+      selectedValue = value;
+
+      dropdownBtn.textContent = value + " ▼";
+
+      dropdownMenu.classList.remove("show");
+
+      search.value = "";
+      renderOptions(countries);
+
+      console.log("Selected:", selectedValue);
+    }
+
+    search.addEventListener("input", (e) => {
+      const value = e.target.value.toLowerCase();
+
+      const filtered = countries.filter(country =>
+        country.toLowerCase().includes(value)
+      );
+
+      renderOptions(filtered);
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdownMenu.classList.remove("show");
+      }
+    });
+
+    renderOptions(countries);
+
+  </script>
+
+</body>
+</html>
+
+
