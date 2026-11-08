@@ -1663,6 +1663,65 @@ console.log(activitySelection(start, end));
 
   </script>
 
+
+      
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Hide Password</title>
+    <style>
+        .container {
+            margin: 100px auto;
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Login</h2>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+        />
+
+        <button id="toggleBtn" onclick="togglePassword()">
+            Show
+        </button>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const toggleBtn = document.getElementById("toggleBtn");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleBtn.innerText = "Hide";
+            } else {
+                passwordInput.type = "password";
+                toggleBtn.innerText = "Show";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
 </body>
 </html>
 
