@@ -1726,3 +1726,20 @@ console.log(activitySelection(start, end));
 </html>
 
 
+<div>
+  <button id="likeBtn">👍 Like</button>
+  <button id="dislikeBtn">👎 Dislike</button>
+</div>
+
+const likeBtn = document.getElementById("likeBtn");
+const dislikeBtn = document.getElementById("dislikeBtn");
+
+likeBtn.addEventListener("click", () => {
+    likeBtn.classList.toggle("active");
+    dislikeBtn.classList.remove("active");
+});
+
+dislikeBtn.addEventListener("click", () => {
+    dislikeBtn.classList.toggle("active");
+    likeBtn.classList.remove("active");
+});
