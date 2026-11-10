@@ -1743,3 +1743,194 @@ dislikeBtn.addEventListener("click", () => {
     dislikeBtn.classList.toggle("active");
     likeBtn.classList.remove("active");
 });
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="container">
+        <h1>Todo App</h1>
+
+        <div class="input-box">
+            <input
+                type="text"
+                id="todoInput"
+                placeholder="Enter your task..."
+            />
+            <button id="addBtn">Add</button>
+        </div>
+
+        <div class="filters">
+            <button data-filter="all">All</button>
+            <button data-filter="completed">Completed</button>
+            <button data-filter="pending">Pending</button>
+        </div>
+
+        <ul id="todoList"></ul>
+
+        <p id="taskCount"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+const todoInput = document.getElementById("todoInput");
+const addBtn = document.getElementById("addBtn");
+const todoList = document.getElementById("todoList");
+const taskCount = document.getElementById("taskCount");
+const filterButtons = document.querySelectorAll("[data-filter]");
+
+let todos = [];
+let currentFilter = "all";
+
+// Add Todo
+addBtn.addEventListener("click", addTodo);
+
+todoInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        addTodo();
+    }
+});
+
+function addTodo() {
+    const text = todoInput.value.trim();
+
+    if (text === "") {
+        alert("Please enter a task");
+        return;
+    }
+
+    const todo = {
+        id: Date.now(),
+        text: text,
+        completed: false
+    };
+
+    todos.push(todo);
+
+    todoInput.value = "";
+
+    renderTodos();
+}
+
+// Display Todos
+function renderTodos() {
+    todoList.innerHTML = "";
+
+    let filteredTodos = todos;
+
+    if (currentFilter === "completed") {
+        filteredTodos = todos.filter(todo => todo.completed);
+    }
+
+    if (currentFilter === "pending") {
+        filteredTodos = todos.filter(todo => !todo.completed);
+    }
+
+    filteredTodos.forEach(todo => {
+        const li = document.createElement("li");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = todo.completed;
+
+        checkbox.addEventListener("change", () => {
+            toggleTodo(todo.id);
+        });
+
+        const span = document.createElement("span");
+        span.textContent = todo.text;
+        span.className = "todo-text";
+
+        if (todo.completed) {
+            span.classList.add("completed");
+        }
+
+        // Edit Button
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.className = "edit-btn";
+
+        editBtn.addEventListener("click", () => {
+            editTodo(todo.id);
+        });
+
+        // Delete Button
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.className = "delete-btn";
+
+        deleteBtn.addEventListener("click", () => {
+            deleteTodo(todo.id);
+        });
+
+        li.append(checkbox, span, editBtn, deleteBtn);
+
+        todoList.appendChild(li);
+    });
+
+    const completedCount = todos.filter(
+        todo => todo.completed
+    ).length;
+
+    taskCount.textContent =
+        `Total: ${todos.length} | Completed: ${completedCount} | Pending: ${todos.length - completedCount}`;
+}
+
+// Toggle Complete
+function toggleTodo(id) {
+    todos = todos.map(todo => {
+        if (todo.id === id) {
+            return {
+                ...todo,
+                completed: !todo.completed
+            };
+        }
+
+        return todo;
+    });
+
+    renderTodos();
+}
+
+// Delete Todo
+function deleteTodo(id) {
+    todos = todos.filter(todo => todo.id !== id);
+
+    renderTodos();
+}
+
+// Edit Todo
+function editTodo(id) {
+    const todo = todos.find(todo => todo.id === id);
+
+    const updatedText = prompt("Edit your task:", todo.text);
+
+    if (updatedText === null || updatedText.trim() === "") {
+        return;
+    }
+
+    todo.text = updatedText.trim();
+
+    renderTodos();
+}
+
+// Filter Todos
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        currentFilter = button.dataset.filter;
+
+        renderTodos();
+    });
+});
+
+renderTodos();
