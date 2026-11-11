@@ -1934,3 +1934,62 @@ filterButtons.forEach(button => {
 });
 
 renderTodos();
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tabs Component</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="tabs">
+      <button class="tab active" data-tab="home">Home</button>
+      <button class="tab" data-tab="about">About</button>
+      <button class="tab" data-tab="contact">Contact</button>
+    </div>
+
+    <div class="content">
+      <div class="tab-content active" id="home">
+        <h2>Home</h2>
+        <p>Welcome to the Home page.</p>
+      </div>
+
+      <div class="tab-content" id="about">
+        <h2>About</h2>
+        <p>This is the About section.</p>
+      </div>
+
+      <div class="tab-content" id="contact">
+        <h2>Contact</h2>
+        <p>Contact us here.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+const tabs = document.querySelectorAll(".tab");
+const contents = document.querySelectorAll(".tab-content");
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    tabs.forEach((t) => {
+      t.classList.remove("active");
+    });
+    contents.forEach((content) => {
+      content.classList.remove("active");
+    });
+    tab.classList.add("active");
+    const tabId = tab.dataset.tab;
+    document.getElementById(tabId).classList.add("active");
+
+  });
+});
