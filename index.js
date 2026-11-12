@@ -1993,3 +1993,105 @@ tabs.forEach((tab) => {
 
   });
 });
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tab Switching</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .tab {
+      padding: 12px 25px;
+      cursor: pointer;
+      border: none;
+      background: #eee;
+      font-size: 16px;
+    }
+
+    .tab.active {
+      background: #2563eb;
+      color: white;
+    }
+
+    .content {
+      display: none;
+      padding: 20px;
+      border: 1px solid #ddd;
+    }
+
+    .content.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Tab Switching</h2>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="home">Home</button>
+    <button class="tab" data-tab="about">About</button>
+    <button class="tab" data-tab="contact">Contact</button>
+  </div>
+
+  <div id="home" class="content active">
+    <h3>Home</h3>
+    <p>Welcome to the Home page!</p>
+  </div>
+
+  <div id="about" class="content">
+    <h3>About</h3>
+    <p>This is the About page.</p>
+  </div>
+
+  <div id="contact" class="content">
+    <h3>Contact</h3>
+    <p>Contact us here.</p>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".content");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+
+        // Remove active class from all tabs
+        tabs.forEach((t) => {
+          t.classList.remove("active");
+        });
+
+        // Remove active class from all contents
+        contents.forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        // Activate clicked tab
+        tab.classList.add("active");
+
+        // Show corresponding content
+        const target = tab.dataset.tab;
+
+        document.getElementById(target).classList.add("active");
+      });
+    });
+  </script>
+
+</body>
+</html>
+
