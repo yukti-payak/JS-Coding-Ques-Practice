@@ -2095,3 +2095,32 @@ tabs.forEach((tab) => {
 </body>
 </html>
 
+
+
+const tabs = document.querySelectorAll(".tab");
+const content = document.getElementById("content");
+
+const data = [
+  { id: 1, content: "Content of Tab 1" },
+  { id: 2, content: "Content of Tab 2" },
+  { id: 3, content: "Content of Tab 3" },
+  { id: 4, content: "Content of Tab 4" }
+];
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    tabs.forEach((t) => t.classList.remove("active"));
+
+    tab.classList.add("active");
+
+    const id = Number(tab.dataset.id);
+
+    const activeContent = data.find(
+      (item) => item.id === id
+    );
+    content.textContent = activeContent.content;
+
+  });
+});
+
+
