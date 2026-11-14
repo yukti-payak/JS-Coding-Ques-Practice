@@ -2124,3 +2124,42 @@ tabs.forEach((tab) => {
 });
 
 
+
+function fractionalKnapsack(items, capacity) {
+    items.sort((a, b) => {
+        return (b.profit / b.weight) - (a.profit / a.weight);
+    });
+
+    let totalProfit = 0;
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].weight <= capacity) {
+
+            totalProfit += items[i].profit;
+            capacity -= items[i].weight;
+
+        } 
+     
+        else {
+
+            totalProfit += 
+                (items[i].profit / items[i].weight) * capacity;
+
+            capacity = 0;
+            break;
+        }
+    }
+
+    return totalProfit;
+}
+
+const items = [
+    { profit: 60, weight: 10 },
+    { profit: 100, weight: 20 },
+    { profit: 120, weight: 30 }
+];
+
+const capacity = 50;
+
+console.log(fractionalKnapsack(items, capacity));
+
+
