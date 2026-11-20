@@ -2181,4 +2181,25 @@ let arr = [0, 1, 0, 3, 12];
 
 console.log(moveZeros(arr));
 
+const accordionItems = document.querySelectorAll(".accordion-item");
+
+accordionItems.forEach((item) => {
+
+    const header = item.querySelector(".accordion-header");
+    const icon = header.querySelector("span");
+
+    header.addEventListener("click", () => {
+
+        item.classList.toggle("active");
+
+        if (item.classList.contains("active")) {
+            icon.textContent = "-";
+        } else {
+            icon.textContent = "+";
+        }
+
+    });
+
+});
+
 
