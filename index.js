@@ -2203,3 +2203,40 @@ accordionItems.forEach((item) => {
 });
 
 
+
+import { useState } from "react";
+
+export default function Dropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("Select an option");
+
+  const options = ["React", "JavaScript", "Node.js", "MongoDB"];
+
+  const handleSelect = (option) => {
+    setSelected(option);
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="dropdown">
+      <button onClick={() => setIsOpen(!isOpen)}>
+        {selected} ▼
+      </button>
+
+      {isOpen && (
+        <ul>
+          {options.map((option, index) => (
+            <li
+              key={index}
+              onClick={() => handleSelect(option)}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+
