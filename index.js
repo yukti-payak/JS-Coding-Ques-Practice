@@ -2240,3 +2240,78 @@ export default function Dropdown() {
 }
 
 
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dropdown</title>
+  <style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background: white;
+      border: 1px solid #ccc;
+      min-width: 150px;
+    }
+
+    .dropdown-menu div {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .dropdown-menu div:hover {
+      background: lightgray;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dropdown">
+    <button id="dropdownBtn">Select Option ▼</button>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+      <div>React</div>
+      <div>JavaScript</div>
+      <div>Node.js</div>
+      <div>MongoDB</div>
+    </div>
+  </div>
+
+  <script>
+    const dropdownBtn = document.getElementById("dropdownBtn");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    dropdownBtn.addEventListener("click", () => {
+      dropdownMenu.classList.toggle("show");
+    });
+    dropdownMenu.addEventListener("click", (event) => {
+      if (event.target.tagName === "DIV") {
+        dropdownBtn.textContent = event.target.textContent + " ▼";
+        dropdownMenu.classList.remove("show");
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".dropdown")) {
+        dropdownMenu.classList.remove("show");
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+
