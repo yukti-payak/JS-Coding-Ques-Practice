@@ -2332,4 +2332,128 @@ const arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 console.log(maxSubArray(arr));
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS To-Do List</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 450px;
+      margin: 40px auto;
+      padding: 0 16px;
+      background: #f9fafb;
+    }
+    .input-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 6px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background: #1d4ed8; }
+    ul { list-style: none; padding: 0; }
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    li.done span {
+      text-decoration: line-through;
+      color: #888;
+    }
+    li span { cursor: pointer; flex: 1; }
+    .delete-btn {
+      background: #ef4444;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+    .delete-btn:hover { background: #dc2626; }
+  </style>
+</head>
+<body>
+
+  <h2>To-Do List</h2>
+  <form id="todo-form" class="input-group">
+    <input type="text" id="todo-input" placeholder="Add a new task..." required />
+    <button type="submit">Add</button>
+  </form>
+  <ul id="todo-list"></ul>
+
+  <script>
+    const form = document.getElementById('todo-form');
+    const input = document.getElementById('todo-input');
+    const list = document.getElementById('todo-list');
+
+    // Load saved tasks from localStorage or start empty
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    function saveAndRender() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      list.innerHTML = '';
+
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        if (task.done) li.classList.add('done');
+
+        const span = document.createElement('span');
+        span.textContent = task.text;
+        span.onclick = () => toggleTask(index);
+
+        const delBtn = document.createElement('button');
+        delBtn.textContent = 'Delete';
+        delBtn.className = 'delete-btn';
+        delBtn.onclick = () => deleteTask(index);
+
+        li.append(span, delBtn);
+        list.appendChild(li);
+      });
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) return;
+
+      tasks.push({ text, done: false });
+      input.value = '';
+      saveAndRender();
+    });
+
+    function toggleTask(index) {
+      tasks[index].done = !tasks[index].done;
+      saveAndRender();
+    }
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      saveAndRender();
+    }
+
+  
+    saveAndRender();
+  </script>
+</body>
+</html>
+
+
 
