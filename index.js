@@ -1439,7 +1439,14 @@ const start = [1, 3, 0, 5, 8, 5];
 const end = [2, 4, 6, 7, 9, 9];
 
 console.log(activitySelection(start, end));
+function reverseString(str){
+    let result = " ";
+    for(let i=str.length-1; i >=0 ; i--){
+        result += str[i];
+    }
 
+    return result;
+}
 
 <!DOCTYPE html>
 <html>
